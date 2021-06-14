@@ -1,0 +1,45 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1140px;
+    width: 100%;
+    margin: 5% auto;
+}
+
+ul {
+    margin-top: 10px;
+}
+
+.sign-in {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.btn-sign-in {
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    margin: 15px;
+    outline: none;
+    background: forestgreen;
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.err {
+    color: red;
+    font-size: 18px;
+    margin: 0;
+    text-transform: capitalize;
+}

@@ -1,0 +1,25 @@
+.UserNav {
+    width: 100%;
+    background: black;
+}
+
+ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    margin: 0 100px 0 40px;
+}
+
+li > a {
+    margin: 0 30px;
+    text-decoration: none;
+    color: white;
+}
+
+li > a:hover {
+    text-decoration: underline;
+}

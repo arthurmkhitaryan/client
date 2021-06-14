@@ -1,0 +1,24 @@
+.Register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1140px;
+    width: 100%;
+    margin: 5% auto;
+}
+
+.errors {
+    text-align: center;
+    color: red;
+}
+
+.link {
+    text-decoration: none;
+    margin: 15px;
+    text-align: center;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
