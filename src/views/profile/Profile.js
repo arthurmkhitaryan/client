@@ -1,15 +1,20 @@
 import "./css/Profile.css";
-import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 
-function Profile() {
-    const location = useLocation();
-    console.log(location)
-
+function Profile({ user }) {
+    console.log(user)
     return (
         <div className="Profile">
+            <h1>Welcome</h1>
             {/*<h1>Welcome {location.state.name}</h1>*/}
         </div>
     );
 }
 
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+};
+
+export default connect(mapStateToProps)(Profile);

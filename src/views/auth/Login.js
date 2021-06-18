@@ -1,10 +1,12 @@
 import "./css/Login.css";
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../repasitory/RepositoryFactory";
-import {Form, Input, Button, Checkbox} from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
+import { loginUser } from "../../redux/actions/userActions";
+import { connect } from "react-redux";
 
-function Login() {
+function Login({ loginUser }) {
 
     const [userData, setUserData] = useState({
         email: "",
@@ -24,25 +26,22 @@ function Login() {
 
     const onFinish = (values: any) => {
         api.auth("login", values)
+        .then((res) => {
+            localStorage.setItem('_token', res.data.data.token);
+            localStorage.setItem('user', JSON.stringify(res.data.data.user));
+            loginUser(res.data.data.user);
+            history.push('/profile')
+        })
+        .catch(err => {
+            console.log(err.response.data)
+        })
+
         console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
-
-    function submit(e) {
-
-        const users = JSON.parse(localStorage.getItem("users"));
-
-        let user = users.find(user => user.email === userData.email && user.pass === userData.pass);
-
-        if (user) {
-            history.push(`/profile/${user.id}`, {"name": user.name})
-            localStorage.setItem("loggedUser", JSON.stringify(user.id));
-        }
-
-    }
 
 
     const onChange = (e) => setUserData({...userData, [e.target.name]: e.target.value});
@@ -58,9 +57,7 @@ function Login() {
                 onFinishFailed={onFinishFailed}
                 action="#"
                 method="post"
-                onSubmit={submit}
             >
-
                 <Form.Item
                     label="Email"
                     name="email"
@@ -89,11 +86,6 @@ function Login() {
                 >
                     <Input.Password/>
                 </Form.Item>
-
-                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit">
                         Sign In
@@ -103,39 +95,13 @@ function Login() {
                 <a className="link" href="/register">Don't have an account?</a>
             </Form>
         </div>
-        // <div className="Login">
-        //     <h1>Login</h1>
-        //     <form action="#" method="post" onSubmit={handleSubmit(submit)}>
-        //         <label htmlFor="email">
-        //             Email
-        //             <p className="err">{errors.email?.message}</p>
-        //             <input
-        //                 {...register("email")}
-        //                 id="email"
-        //                 type="email"
-        //                 name="email"
-        //                 value={userData.email}
-        //                 onChange={onChange}
-        //             />
-        //         </label>
-        //         <label htmlFor="password">
-        //             Password
-        //             <p className="err">{errors.pass?.message}</p>
-        //             <input
-        //                 {...register("pass")}
-        //                 id="password"
-        //                 type="password"
-        //                 name="pass"
-        //                 value={userData.pass}
-        //                 onChange={onChange}
-        //             />
-        //         </label>
-        //         <button className="btn-sign-in" type="submit">Sign In</button>
-        //         <a className="link" href="/forgot">Forgot Password</a>
-        //         <a className="link" href="/register">Don't have an account?</a>
-        //     </form>
-        // </div>
     );
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+    return {
+        loginUser: data => dispatch(loginUser(data))
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Login);
