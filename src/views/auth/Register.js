@@ -1,29 +1,30 @@
-import "./css/Register.css";
-import {Form, Input, Select, Button, DatePicker} from 'antd';
-import api from "../../repasitory/RepositoryFactory";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {useHistory} from 'react-router-dom';
+
+import {LoginRoute} from '../../constants/routes/routes';
+import {Link} from 'react-router-dom';
+
+import {Form, Input, Select, Button, DatePicker} from 'antd';
+import "./css/Register.css";
+
+import {registerUser} from "../../redux/actions/userActions";
+import { executeErrors } from '../../helpers/main';
 
 function Register() {
 
-    const [errMsg, setErrMsg] = useState("");
-    const [param, setParam] = useState("");
+    const dispatch = useDispatch();
+    const history = useHistory;
+    const [form] = Form.useForm();
 
     const formItemLayout = {
         labelCol: {
-            xs: {
-                span: 24,
-            },
-            sm: {
-                span: 8,
-            },
+            xs: {span: 24},
+            sm: {span: 8},
         },
         wrapperCol: {
-            xs: {
-                span: 24,
-            },
-            sm: {
-                span: 16,
-            },
+            xs: {span: 24},
+            sm: {span: 16},
         },
     };
 
@@ -40,24 +41,29 @@ function Register() {
         },
     };
 
-    const [form] = Form.useForm();
+    // const executeErrors = (error) => {
+    //     let serverErrors = [];
+    //     serverErrors = error.errors.map(eachError => {
+    //         return {
+    //             name: eachError.param,
+    //             errors: [eachError.msg]
+    //         }
+    //     });
+    //
+    //     form.setFields(serverErrors);
+    // }
 
     const onFinish = (values) => {
         let toTimestamp = strDate => Date.parse(strDate)
-        values.day = toTimestamp(values.day)
-        return api.auth('register', values)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            const data = err.response.data;
-            console.log(data.data.errors[0].msg)
-            setErrMsg(data.data.errors[0].msg)
-            // setParam(data.data.param)
-            console.log(data)
-            // console.log(`<Form.Item rules>`);
-        })
-
+        values.birth_day = toTimestamp(values.birth_day);
+        dispatch(registerUser(values))
+            .then(() => {
+                history.push(LoginRoute)
+            })
+            .catch(err => {
+                const data = err.response.data.data;
+                executeErrors(form, data);
+            })
     }
 
     return (
@@ -82,7 +88,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item
@@ -97,7 +103,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item
@@ -114,10 +120,11 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
+
                 <Form.Item
-                    name="day"
+                    name="birth_day"
                     label="Bird Day"
                     rules={[
                         {
@@ -126,11 +133,12 @@ function Register() {
                         },
                     ]}
                 >
-                    <DatePicker/>
+                    <DatePicker />
 
                 </Form.Item>
+
                 <Form.Item
-                    name="pass"
+                    name="password"
                     label="Password"
                     rules={[
                         {
@@ -140,10 +148,11 @@ function Register() {
                     ]}
                     hasFeedback
                 >
-                    <Input.Password/>
+                    <Input.Password />
                 </Form.Item>
+
                 <Form.Item
-                    name="re_pass"
+                    name="confirm_password"
                     label="Confirm Password"
                     dependencies={['password']}
                     hasFeedback
@@ -154,7 +163,7 @@ function Register() {
                         },
                         ({getFieldValue}) => ({
                             validator(_, value) {
-                                if (!value || getFieldValue('pass') === value) {
+                                if (!value || getFieldValue('password') === value) {
                                     return Promise.resolve();
                                 }
 
@@ -163,8 +172,9 @@ function Register() {
                         }),
                     ]}
                 >
-                    <Input.Password/>
+                    <Input.Password />
                 </Form.Item>
+
                 <Form.Item
                     name="gender"
                     label="Gender"
@@ -175,19 +185,19 @@ function Register() {
                         },
                     ]}
                 >
-                    <Select placeholder="select your gender">
+                    <Select placeholder="select your gender" >
                         <Select.Option name="gender" value="Male">Male</Select.Option>
                         <Select.Option name="gender" value="Female">Female</Select.Option>
                         <Select.Option name="gender" value="Other">Other</Select.Option>
                     </Select>
                 </Form.Item>
-                {/*{if()}<p className="errors">{errMsg}</p>*/}
+
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
                         Sign Up
                     </Button>
                 </Form.Item>
-                <a className="link" href="/login">Already have an account?</a>
+                <Link className="link" to={LoginRoute}>Already have an account?</Link>
             </Form>
         </div>
     );

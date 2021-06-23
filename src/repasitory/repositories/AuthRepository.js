@@ -20,7 +20,6 @@ class AuthRepository extends ApiFactory {
   me(token) {
     return new Promise(( resolve, reject ) => {
       this.get(`${this.prefix}/me`, token ).then((res) => {
-        console.log(res)
         resolve(res)
       }).catch(err => {
         reject(err)

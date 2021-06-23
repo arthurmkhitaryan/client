@@ -1,7 +1,7 @@
 import './App.css';
 import 'antd/dist/antd.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import {useHistory} from 'react-router-dom';
+import { ProfileRoute, LoginRoute, RegisterRoute} from './constants/routes/routes'
 import api from "./repasitory/RepositoryFactory";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
@@ -10,10 +10,10 @@ import React, {useEffect} from "react";
 
 
 function App() {
-
     useEffect(() => {
-        api.auth('me').then((res) => {
-            console.log(res)
+        const token = localStorage.getItem('_token');
+        token && api.auth('me').then((result) => {
+            console.log(result)
         })
     }, [])
 
@@ -21,9 +21,9 @@ function App() {
         <BrowserRouter>
             <div className="App">
                 <div className="app-wrapper">
-                    <Route path="/login" component={Login}/>
-                    <Route path="/register" component={Register}/>
-                    <Route path="/profile" component={Profile}/>
+                    <Route path={ProfileRoute} component={Profile}/>
+                    <Route path={LoginRoute} component={Login}/>
+                    <Route path={RegisterRoute} component={Register}/>
                 </div>
             </div>
         </BrowserRouter>

@@ -1,16 +1,13 @@
-import { LOGIN_SUCCESS }  from '../../constants/userConstants';
 
 const initialState = {
-    user: {},
-    isLoggedIn: false
+    user: null,
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_SUCCESS:
+        case 'LOGIN_SUCCESS':
             return {
                 ...initialState,
-                isLoggedIn: true,
                 user: action.payload
             }
         default:

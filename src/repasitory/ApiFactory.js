@@ -27,6 +27,4 @@ export default class ApiFactory {
     get(url, data) {
         return this.call({ method: 'get', url: url }, data)
     }
-
-
 }

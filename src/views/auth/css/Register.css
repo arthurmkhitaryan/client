@@ -13,6 +13,13 @@
     color: red;
 }
 
+p{
+    color: red;
+    margin-top: -5px;
+    margin-left: 25%;
+    text-align: center;
+}
+
 .link {
     text-decoration: none;
     margin: 15px;
@@ -22,3 +29,13 @@
 .link:hover {
     text-decoration: underline;
 }
+
+.error {
+    border: 1px solid red;
+}
+
+.ant-form-item{
+    margin: 0 0 15px;
+}
+
+
