@@ -1,29 +1,30 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import api from "./repasitory/RepositoryFactory";
+
+import {BrowserRouter} from "react-router-dom";
+import RouterView from "./components/custom/RouterView";
+
 import './App.css';
 import 'antd/dist/antd.css';
-import {BrowserRouter, Route} from "react-router-dom";
-import { ProfileRoute, LoginRoute, RegisterRoute} from './constants/routes/routes'
-import api from "./repasitory/RepositoryFactory";
-import Login from "./views/auth/Login";
-import Register from "./views/auth/Register";
-import Profile from "./views/profile/Profile";
-import React, {useEffect} from "react";
-
+import {setUser} from "./redux/actions/userActions";
 
 function App() {
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const token = localStorage.getItem('_token');
         token && api.auth('me').then((result) => {
-            console.log(result)
+            dispatch(setUser(result.data.data.user))
         })
-    }, [])
+    })
 
     return (
         <BrowserRouter>
             <div className="App">
                 <div className="app-wrapper">
-                    <Route path={ProfileRoute} component={Profile}/>
-                    <Route path={LoginRoute} component={Login}/>
-                    <Route path={RegisterRoute} component={Register}/>
+                    <RouterView />
                 </div>
             </div>
         </BrowserRouter>

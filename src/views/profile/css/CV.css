@@ -1,0 +1,54 @@
+.CV {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    box-sizing: border-box;
+}
+
+.left-bar {
+    display: inline-block;
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+}
+
+.right-bar {
+    display: inline-block;
+    background-color: rgb(245, 245, 245);
+    padding: 30px;
+}
+
+.title {
+    color: rgb(178, 127, 0);
+}
+
+input {
+    border: none;
+    background: transparent;
+}
+
+.circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background-color: rgb(178, 127, 0);
+}
+
+.year {
+    width: 3em;
+}
+
+.present {
+    width: 5em;
+}
+
+.photo {
+    border: 7px solid rgb(30, 30, 30);
+    background: darkgray;
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    outline: 7px solid rgb(178, 127, 0);
+    transform: rotateZ(45deg);
+}

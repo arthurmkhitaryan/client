@@ -10,6 +10,16 @@ const userReducer = (state = initialState, action) => {
                 ...initialState,
                 user: action.payload
             }
+        case 'SET_USER':
+            return {
+                ...initialState,
+                user: action.payload
+            }
+        case 'LOGOUT':
+            return {
+                ...initialState,
+                user: action.payload
+            }
         default:
             return state;
     }

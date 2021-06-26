@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom';
 
@@ -40,18 +39,6 @@ function Register() {
             },
         },
     };
-
-    // const executeErrors = (error) => {
-    //     let serverErrors = [];
-    //     serverErrors = error.errors.map(eachError => {
-    //         return {
-    //             name: eachError.param,
-    //             errors: [eachError.msg]
-    //         }
-    //     });
-    //
-    //     form.setFields(serverErrors);
-    // }
 
     const onFinish = (values) => {
         let toTimestamp = strDate => Date.parse(strDate)
