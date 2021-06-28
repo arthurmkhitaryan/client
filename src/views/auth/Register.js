@@ -48,6 +48,7 @@ function Register() {
                 history.push(LoginRoute)
             })
             .catch(err => {
+                console.log(err)
                 const data = err.response.data.data;
                 executeErrors(form, data);
             })
@@ -112,7 +113,7 @@ function Register() {
 
                 <Form.Item
                     name="birth_day"
-                    label="Bird Day"
+                    label="Birth Day"
                     rules={[
                         {
                             required: true,

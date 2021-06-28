@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions/userActions";
 import { LoginRoute } from '../../constants/routes/routes'
 import { useHistory } from 'react-router-dom';
-import CV from './CV';
+import CV from './CV/CV';
 
 function Profile() {
     const dispatch = useDispatch();

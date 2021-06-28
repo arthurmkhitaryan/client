@@ -12,6 +12,5 @@ h1 {
 .wrapper {
     max-width: 1140px;
     width: 100%;
-    border: 1px solid red;
     margin: 20px auto;
 }

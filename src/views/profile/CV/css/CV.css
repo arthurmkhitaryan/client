@@ -1,0 +1,206 @@
+.CV {
+    max-width: 595px;
+    width: 100%;
+    height: 842px;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.left-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+}
+.right-bar {
+    display: inline-block;
+    background-color: rgb(245, 245, 245);
+    padding: 30px;
+}
+.title {
+    color: rgb(178, 127, 0);
+}
+.input {
+    border: none !important;
+    outline: none !important;
+    background: transparent;
+}
+.circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background-color: rgb(178, 127, 0);
+}
+.year {
+    width: 3em;
+    font-weight: bold;
+    color: rgb(178, 127, 0);
+}
+.year::placeholder {
+    color: rgb(178, 127, 0);
+}
+.tire{
+    color: rgb(178, 127, 0);
+    display: inline-block;
+    padding-right: 3px;
+}
+.present {
+    width: 5em;
+    color: rgb(178, 127, 0);
+    font-weight: bold;
+}
+.present::placeholder {
+    color: rgb(178, 127, 0);
+}
+.sub-block {
+    display: inline-block;
+    width: 30%;
+}
+.company {
+    font-weight: bold;
+}
+.sub {
+    margin-left: 40%;
+}
+.func-title {
+    width: 6em;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+.city {
+    width: 5em;
+}
+.description {
+    width: 14em;
+    resize: none;
+    overflow: hidden;
+}
+.company::placeholder {
+    color: black;
+    font-weight: bold;
+}
+.inp-photo {
+    display: block;
+    transform: rotateZ(-45deg);
+    width: 90px;
+    height: 50px;
+}
+.photo {
+    position: relative;
+    overflow: hidden;
+    border: 4px solid rgb(30, 30, 30);
+    background: darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 125px;
+    margin: 50px auto;
+    outline: 4px solid rgb(178, 127, 0);
+    transform: rotateZ(45deg);
+}
+.cv-photo {
+    max-width: 400px;
+    height: auto;
+    transform: rotateZ(-45deg);
+    display: none;
+    position: absolute;
+}
+.add {
+    /*display: none;*/
+}
+.experience {
+    min-height: 300px;
+}
+.remove {
+    font-size: 26px;
+    margin-left: 80px;
+    cursor: pointer;
+}
+.name {
+    width: 80%;
+    font-size: 40px;
+    color: white;
+}
+.surname {
+    width: 100%;
+    font-size: 30px;
+    color: white;
+}
+.job-title {
+    width: 100%;
+    font-size: 20px;
+    color: white;
+}
+.contact {
+    color: rgb(178, 127, 0);
+}
+.main {
+    margin-top: -30px;
+}
+.top {
+    margin-bottom: 20px;
+}
+.title {
+    margin: 0;
+}
+.skills {
+    width: 100px;
+    color: lightgray;
+    font-size: 14px;
+}
+.skills::placeholder {
+    color: lightgray;
+}
+.group {
+    color: lightgray;
+    margin: 0 0 5px 0;
+    padding: 0;
+    width: 120px;
+    font-size: 15px;
+}
+.group::placeholder {
+    color: lightgray;
+}
+.skill-circle {
+    display: inline-block;
+    margin: 2px;
+    border-radius: 50%;
+    background-color: lightgray;
+    width: 12px;
+    height: 12px;
+}
+.skill-circle:hover {
+    cursor: pointer;
+}
+.contact {
+    margin-top: -15px;
+}
+
+.tel {
+    width: 70%;
+    color: lightgray;
+}
+
+.email {
+    width: 70%;
+    color: lightgray;
+}
+
+.linkedin {
+    width: 70%;
+    color: lightgray;
+}
