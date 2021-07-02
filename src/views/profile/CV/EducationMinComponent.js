@@ -1,19 +1,24 @@
-function Education({ remove }) {
+import {useSelector} from "react-redux";
+
+function Education({ remove, item }) {
+
+    const btnState = useSelector(state => state.profile.displayBlock)
+
     return (
         <div className='block'>
             <span className='circle'></span>
-            <input type="text" placeholder='YYYY ' className='year input'/>
+            <div suppressContentEditableWarning={true} contentEditable={true} className='year input'>{item.year}</div>
             <span className='tire'>-</span>
-            <input type="text" placeholder='Present' className='present input'/>
+            <div suppressContentEditableWarning={true} contentEditable={true} className='present input'>{item.present}</div>
             <div className='sub-block'>
-                <input className='company input' type="text" placeholder='Education/course name'/>
+                <div suppressContentEditableWarning={true} contentEditable={true} className='company input'>{item.course}</div>
             </div>
-            <span onClick={remove} className='remove'>&times;</span>
+            {btnState && <span onClick={remove} className='remove'>&times;</span>}
             <div className="sub">
-                <input type="text" className='input func-title' placeholder='Organization'/>
+                <div suppressContentEditableWarning={true} contentEditable={true} className='func-title input'>{item.organization}</div>
                 <span>,</span>
-                <input type="text" className='input city' placeholder='City'/>
-                <textarea type="text" className='input description' rows={3} placeholder='Description of the education/course.'></textarea>
+                <div suppressContentEditableWarning={true} contentEditable={true} className='city input'>{item.city}</div>
+                <div suppressContentEditableWarning={true} contentEditable={true} className='description input'>{item.description}</div>
             </div>
         </div>
     );

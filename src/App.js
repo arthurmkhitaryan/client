@@ -17,6 +17,8 @@ function App() {
         const token = localStorage.getItem('_token');
         token && api.auth('me').then((result) => {
             dispatch(setUser(result.data.data.user))
+        }).catch(e => {
+            console.log(e)
         })
     })
 

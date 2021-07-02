@@ -26,10 +26,6 @@ class AuthRepository extends ApiFactory {
     })
   }
 
-  logout() {
-
-  }
-
   register(credentials) {
     return new Promise((resolve, reject) => {
       this.post(`${this.prefix}/register`, credentials)

@@ -1,15 +1,21 @@
-import {useEffect, useState} from "react";
+import { useState } from "react";
 
 import Experience from "./ExperienceMinComponent";
 import Education from "./EducationMinComponent";
 import Skills from "./SkillsMinComponent";
+import Contacts from "./ContactsMinComponent";
 import AddButton from "./AddButton";
 
 import './css/CV.css';
-import Contacts from "./ContactsMinComponent";
+import {useSelector} from "react-redux";
+
+
 
 function CV() {
     const [photoPath, setPhotoPath] = useState('');
+
+    const btnState = useSelector(state => state.profile.displayBlock)
+
     const [experience, setExperience] = useState([
         {
             id: 1,
@@ -21,15 +27,18 @@ function CV() {
             description: "Description of the job, position and responsibilities.",
         },
     ]);
-    const [education, setEducation] = useState([{
-        id: 1,
-        year: "YYYY",
-        present: "Present",
-        course: "Education/course name",
-        organization: "Organization",
-        city: "City",
-        description: "Description of the education/course.",
-    }]);
+
+    const [education, setEducation] = useState([
+        {
+            id: 1,
+            year: "YYYY",
+            present: "Present",
+            course: "Education/course name",
+            organization: "Organization",
+            city: "City",
+            description: "Description of the education/course.",
+        }
+    ]);
 
     const selectMainPhoto = (e) => {
 
@@ -42,7 +51,6 @@ function CV() {
             }
         }
         reader.readAsDataURL(e.target.files[0])
-
     }
 
     const addExperience = (e) => {
@@ -54,7 +62,7 @@ function CV() {
                     year: "YYYY",
                     present: "Present",
                     company: "Company",
-                    func_title: "Function title",
+                    func: "Function title",
                     city: "city",
                     description: "Description of the job, position and responsibilities.",
                 }
@@ -87,13 +95,13 @@ function CV() {
     }
 
     const removeEducation = (id) => {
-        if (education.length > 1){
+        if (education.length > 1) {
             setEducation(prevState => prevState.filter(item => item.id !== id))
         }
     }
 
     return (
-        <div className='CV'>
+        <div className='CV' id='CV'>
             <div className="left-bar">
                 <div className="top">
                     <div className='photo'>
@@ -101,15 +109,15 @@ function CV() {
                                accept="image/*"/>
                         <img id='cv-photo' className='cv-photo' src={photoPath} width='220' alt="photo"/>
                     </div>
-                    <input type="text" className='name input' placeholder='NAME'/>
-                    <input type="text" className='surname input' placeholder='SURNAME'/>
-                    <input type="text" className='job-title input' placeholder='JOB TITLE'/>
+                    <div suppressContentEditableWarning={true} contentEditable={true} className='name input'>NAME</div>
+                    <div suppressContentEditableWarning={true} contentEditable={true} className='surname input'>SURNAME</div>
+                    <div suppressContentEditableWarning={true} contentEditable={true} className='job-title input'>JOB TITLE</div>
                 </div>
                 <div className="main">
-                    <Skills />
+                    <Skills/>
                 </div>
                 <div className="footer">
-                    <Contacts />
+                    <Contacts/>
                 </div>
             </div>
             <div className="right-bar">
@@ -120,7 +128,7 @@ function CV() {
                             <Experience key={i} remove={() => removeExperience(el.id)} item={el}/>
                         ))
                     }
-                    <AddButton add={addExperience} type={'Experience'}/>
+                    {btnState && <AddButton add={addExperience} type={'Experience'}/>}
                 </div>
                 <div className="education">
                     <h1 className='title'>EDUCATION</h1>
@@ -129,7 +137,7 @@ function CV() {
                             <Education key={i} remove={() => removeEducation(el.id)} item={el}/>
                         ))
                     }
-                    <AddButton add={addEducation} type={'Education'}/>
+                    {btnState && <AddButton add={addEducation} type={'Education'}/>}
                 </div>
             </div>
         </div>
