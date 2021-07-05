@@ -1,8 +1,9 @@
 import api from "../../repasitory/RepositoryFactory";
 
-export function saveCVs(cvData) {
+export function saveCVs(buffer) {
+    // console.log(buffer)
     return () => {
-        return api.profile('saveCV', cvData)
+        return api.profile('saveCV', buffer)
             .then(res => {
                 console.log(res)
             })

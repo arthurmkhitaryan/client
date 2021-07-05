@@ -6,10 +6,9 @@ import Skills from "./SkillsMinComponent";
 import Contacts from "./ContactsMinComponent";
 import AddButton from "./AddButton";
 
-import './css/CV.css';
+// import './css/CV.css';
 import {useSelector} from "react-redux";
-
-
+import styles from './css/styles'
 
 function CV() {
     const [photoPath, setPhotoPath] = useState('');
@@ -101,8 +100,8 @@ function CV() {
     }
 
     return (
-        <div className='CV' id='CV'>
-            <div className="left-bar">
+        <div style={styles.CV} className='CV' id='CV'>
+            <div style={styles.leftBar} className="left-bar">
                 <div className="top">
                     <div className='photo'>
                         <input id='upload' className='input inp-photo' type="file" onChange={selectMainPhoto}
@@ -120,7 +119,7 @@ function CV() {
                     <Contacts/>
                 </div>
             </div>
-            <div className="right-bar">
+            <div style={styles.rightBar} className="right-bar">
                 <div className="experience">
                     <h1 className='title'>EXPERIENCE</h1>
                     {

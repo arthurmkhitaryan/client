@@ -9,9 +9,10 @@ export default class ApiFactory {
     call({method, url}, data) {
         let request_key = `${url}/${method}`;
         this.pendingRequests[request_key] = new Promise((resolve, reject) => {
-            this.instance[method](`${url}`, data).then(res =>{
-                resolve(res);
-            }).catch(err => {
+            this.instance[method](`${url}`, data)
+                .then(res => {
+                    resolve(res);
+                }).catch(err => {
                 reject(err);
             }).finally(() => {
                 delete this.pendingRequests[request_key];
@@ -21,10 +22,10 @@ export default class ApiFactory {
     }
 
     post(url, data) {
-        return this.call({ method: 'post', url: url }, data)
+        return this.call({method: 'post', url: url}, data)
     }
 
     get(url, data) {
-        return this.call({ method: 'get', url: url }, data)
+        return this.call({method: 'get', url: url}, data)
     }
 }

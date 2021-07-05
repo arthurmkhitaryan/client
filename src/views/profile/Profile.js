@@ -6,9 +6,8 @@ import { LoginRoute } from '../../constants/routes/routes'
 import { useHistory } from 'react-router-dom';
 import CV from './CV/CV';
 import {saveCVs, setDisplay} from "../../redux/actions/profileActions";
-import html2canvas from 'html2canvas';
-import jsPDF from "jspdf";
-import React, { useRef } from "react";
+import React, {useRef, useState} from "react";
+import writer from 'write-file-p'
 
 function Profile() {
     const dispatch = useDispatch();
@@ -22,29 +21,16 @@ function Profile() {
         history.push(LoginRoute);
     }
 
-    const sendFileServer = (file) => {
-        dispatch(saveCVs(file))
-            .then(res => {
-            console.log(res)
-        })
-    }
-
-    const printDocument = () => {
+    const printDocument = (html) => {
         dispatch(setDisplay(false))
+        let str = '';
         setTimeout(() => {
-            html2canvas(divToPrint.current)
-                .then((canvas) => {
-                    const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jsPDF('p', 'mm', [157.42708333333, 180.44583333333]);
-                    pdf.addImage(imgData, 'JPEG', -133.1, -3.3);
-
-                    const formData = new FormData();
-                    formData.append('pdf', new Blob([pdf.output('blob')], {type: 'application/pdf'}));
-                    sendFileServer(formData);
-
-                    pdf.save(`cv-${Date.now()}.pdf`);
-                });
-        }, 500)
+            str += html.innerHTML;
+            dispatch(saveCVs(str))
+                .then(res => {
+                    console.log(res)
+                })
+        }, 300)
     }
 
     return (
@@ -56,7 +42,7 @@ function Profile() {
             <div id="divToPrint" className="mt4" ref={divToPrint}>
                 <CV/>
             </div>
-            <button className='button' onClick={printDocument}>Save And Generate</button>
+            <button className='button' onClick={() => printDocument(divToPrint.current)}>Save And Generate</button>
         </div>
     );
 }

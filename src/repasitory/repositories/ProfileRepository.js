@@ -7,9 +7,9 @@ class ProfileRepository extends ApiFactory {
         this.prefix = "/profile"
     }
 
-    saveCV(file) {
+    saveCV(buffer) {
         return new Promise((resolve, reject) => {
-            this.post(`${this.prefix}/cv`, file)
+            this.post(`${this.prefix}/cv`, buffer)
                 .then(res => {
                     console.log(res)
                     resolve(res)

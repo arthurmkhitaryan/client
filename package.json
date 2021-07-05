@@ -48,7 +48,10 @@
     ]
   },
   "devDependencies": {
+    "i": "^0.3.6",
+    "npm": "^7.19.1",
     "react-router-dom": "^5.2.0",
-    "react-router-guard": "^2.3.0"
+    "react-router-guard": "^2.3.0",
+    "write-file-p": "^1.0.8"
   }
 }
