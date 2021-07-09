@@ -2,8 +2,8 @@ import GuestRoutes from './guest-routes';
 import AuthRoutes from './user-routes';
 
 const routes = [
-    ...GuestRoutes,
     ...AuthRoutes,
+    ...GuestRoutes,
 ];
 
 export default routes;

@@ -1,25 +1,12 @@
-import {useSelector} from "react-redux";
+function Education({ setEducation }) {
 
-function Education({ remove, item }) {
-
-    const btnState = useSelector(state => state.profile.displayBlock)
+    const handlerChange = (e) => {
+        setEducation(() => e.target.value)
+    }
 
     return (
         <div className='block'>
-            <span className='circle'></span>
-            <div suppressContentEditableWarning={true} contentEditable={true} className='year input'>{item.year}</div>
-            <span className='tire'>-</span>
-            <div suppressContentEditableWarning={true} contentEditable={true} className='present input'>{item.present}</div>
-            <div className='sub-block'>
-                <div suppressContentEditableWarning={true} contentEditable={true} className='company input'>{item.course}</div>
-            </div>
-            {btnState && <span onClick={remove} className='remove'>&times;</span>}
-            <div className="sub">
-                <div suppressContentEditableWarning={true} contentEditable={true} className='func-title input'>{item.organization}</div>
-                <span>,</span>
-                <div suppressContentEditableWarning={true} contentEditable={true} className='city input'>{item.city}</div>
-                <div suppressContentEditableWarning={true} contentEditable={true} className='description input'>{item.description}</div>
-            </div>
+            <textarea name="description" cols="50" rows="12" className='description' onChange={handlerChange} placeholder='Write your education description...'></textarea>
         </div>
     );
 }

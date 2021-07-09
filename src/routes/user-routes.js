@@ -1,9 +1,9 @@
 import authMiddleware from '../middlewares/auth';
 
-import {ProfileRoute} from "../constants/routes/routes";
-
+import {ProfileRoute, MyCVsRoute} from "../constants/routes/routes";
 
 import Profile from "../views/profile/Profile";
+import MyCVs from "../views/profile/CV/MyCVs";
 
 const routes =  [
     {
@@ -12,6 +12,10 @@ const routes =  [
             {
                 path: ProfileRoute,
                 component: Profile
+            },
+            {
+                path: MyCVsRoute,
+                component: MyCVs
             }
         ]
     }

@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import userReducer from './userReducer';
-import profileReducer from './profileReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { NODE_ENV } from '../../config/env';
+import profileReducer from "./profileReducer";
 
 const rootReducer = combineReducers({
     user: userReducer,

@@ -30,10 +30,11 @@ class AuthRepository extends ApiFactory {
     return new Promise((resolve, reject) => {
       this.post(`${this.prefix}/register`, credentials)
           .then((res) => {
-            if (res.data.success) {
-              resolve(res.data.data)
+            if (res.data.success === true) {
+              return resolve(res.data.data)
             }
           }).catch(err => {
+        console.log(err)
         reject(err);
       })
     })

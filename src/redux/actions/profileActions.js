@@ -1,20 +1,19 @@
 import api from "../../repasitory/RepositoryFactory";
 
-export function saveCVs(buffer) {
-    // console.log(buffer)
+export function saveCVs(data) {
     return () => {
-        return api.profile('saveCV', buffer)
+        return api.profile('saveCV',  data)
             .then(res => {
-                console.log(res)
+                return res;
             })
     };
 }
 
-export function setDisplay(value) {
-    return dispatch => {
-        dispatch({
-            type: 'BTN-SET-DISPLAY',
-            payload: value
-        })
-    }
+export function myCVs() {
+        return () => {
+            return api.profile('myCVs')
+                .then(res => {
+                    return res;
+                })
+        }
 }

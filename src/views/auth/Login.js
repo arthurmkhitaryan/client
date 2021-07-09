@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import {useState} from "react";
+import {useHistory, Link} from "react-router-dom";
 
-import { loginUser } from "../../redux/actions/userActions";
-import { useDispatch } from "react-redux";
+import {loginUser} from "../../redux/actions/userActions";
+import {useDispatch} from "react-redux";
 
 import {
     ProfileRoute,
@@ -10,10 +10,11 @@ import {
     ForgotPasswordRoute
 } from "../../constants/routes/routes";
 
-import { Form, Input, Button } from 'antd';
+import {Form, Input, Button} from 'antd';
 import "./css/Login.css";
 
 function Login() {
+    console.log("login page");
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ function Login() {
             .then(() => {
                 history.push(ProfileRoute);
             })
-            .catch(({ response }) => {
+            .catch(({response}) => {
                 setLoginError(response.data.data.message);
             })
     };
@@ -46,7 +47,7 @@ function Login() {
     return (
         <div className="Login">
             <h1 className="sign-in">Sign In</h1>
-            { loginError && <h3>{ loginError }</h3> }
+            {loginError && <h3>{loginError}</h3>}
             <Form
                 {...layout}
                 name="basic"

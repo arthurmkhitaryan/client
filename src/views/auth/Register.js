@@ -8,12 +8,12 @@ import {Form, Input, Select, Button, DatePicker} from 'antd';
 import "./css/Register.css";
 
 import {registerUser} from "../../redux/actions/userActions";
-import { executeErrors } from '../../helpers/main';
+import {executeErrors} from '../../helpers/main';
 
 function Register() {
 
     const dispatch = useDispatch();
-    const history = useHistory;
+    const history = useHistory();
     const [form] = Form.useForm();
 
     const formItemLayout = {
@@ -48,8 +48,7 @@ function Register() {
                 history.push(LoginRoute)
             })
             .catch(err => {
-                console.log(err)
-                const data = err.response.data.data;
+                const data = err.response.data?.data;
                 executeErrors(form, data);
             })
     }
@@ -76,7 +75,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
 
                 <Form.Item
@@ -91,7 +90,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
 
                 <Form.Item
@@ -108,7 +107,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
 
                 <Form.Item
@@ -121,7 +120,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <DatePicker />
+                    <DatePicker/>
 
                 </Form.Item>
 
@@ -136,7 +135,7 @@ function Register() {
                     ]}
                     hasFeedback
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
 
                 <Form.Item
@@ -160,7 +159,7 @@ function Register() {
                         }),
                     ]}
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
 
                 <Form.Item
@@ -173,7 +172,7 @@ function Register() {
                         },
                     ]}
                 >
-                    <Select placeholder="select your gender" >
+                    <Select placeholder="select your gender">
                         <Select.Option name="gender" value="Male">Male</Select.Option>
                         <Select.Option name="gender" value="Female">Female</Select.Option>
                         <Select.Option name="gender" value="Other">Other</Select.Option>

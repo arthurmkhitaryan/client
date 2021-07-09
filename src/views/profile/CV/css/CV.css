@@ -8,15 +8,21 @@
     grid-template-columns: 1fr 2fr;
 }
 
-/*.left-bar {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: space-between;*/
-/*    background-color: rgb(30, 30, 30);*/
-/*    padding: 20px;*/
-/*}*/
+.alert {
+    margin-top: 15px;
+}
+
+.left-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+}
 .right-bar {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background-color: rgb(245, 245, 245);
     padding: 30px;
 }
@@ -28,53 +34,12 @@
     outline: none !important;
     background: transparent;
 }
-.circle {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 3px;
-    background-color: rgb(178, 127, 0);
-}
-.year {
-    width: 3em;
-    display: inline-block;
-    font-weight: bold;
-    color: rgb(178, 127, 0);
-}
-.year::placeholder {
-    color: rgb(178, 127, 0);
-}
-.tire{
-    color: rgb(178, 127, 0);
-    display: inline-block;
-    padding-right: 3px;
-}
-.present {
-    width: 5em;
-    color: rgb(178, 127, 0);
-    display: inline-block;
-    font-weight: bold;
-}
-.present::placeholder {
-    color: rgb(178, 127, 0);
-}
 .sub-block {
     display: inline-block;
     width: 30%;
 }
-.company {
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    width: 12em;
-}
 .sub {
     margin-left: 40%;
-}
-.func-title {
-    width: 6em;
-    display: inline-block;
 }
 ul {
     list-style-type: none;
@@ -86,19 +51,18 @@ h1 {
     margin: 0;
     padding: 0;
 }
-.city {
-    display: inline-block;
-    width: 5em;
-}
 .description {
-    width: 14em;
+    margin-top: 25px;
     resize: none;
-    overflow: hidden;
-    display: inline-block;
-}
-.company::placeholder {
+    outline: none;
+    padding: 10px;
+    border:none;
     color: black;
-    font-weight: bold;
+    background: transparent;
+    overflow: hidden;
+}
+.description::placeholder {
+    color: black;
 }
 .inp-photo {
     display: block;
@@ -127,16 +91,14 @@ h1 {
     display: none;
     position: absolute;
 }
-.add {
-    /*display: none;*/
+.name::placeholder {
+    color: lightgray;
 }
-.experience {
-    min-height: 300px;
+.surname::placeholder {
+    color: lightgray;
 }
-.remove {
-    font-size: 26px;
-    margin-left: 80px;
-    cursor: pointer;
+.job-title::placeholder {
+    color: lightgray;
 }
 .name {
     width: 80%;
@@ -154,7 +116,7 @@ h1 {
     color: white;
 }
 .contact {
-    color: rgb(178, 127, 0);
+
 }
 .main {
     margin-top: -30px;
@@ -166,47 +128,37 @@ h1 {
     margin: 0;
 }
 .skills {
-    width: 100px;
+    background: transparent;
+    resize: none;
+    outline: none;
     color: lightgray;
+    padding: 3px;
     font-size: 14px;
-}
-.skills::placeholder {
-    color: lightgray;
-}
-.group {
-    color: lightgray;
-    margin: 0 0 5px 0;
-    padding: 0;
-    width: 120px;
-    font-size: 15px;
-}
-.group::placeholder {
-    color: lightgray;
-}
-.skill-circle {
-    display: inline-block;
-    margin: 2px;
-    border-radius: 50%;
-    background-color: lightgray;
-    width: 12px;
-    height: 12px;
-}
-.skill-circle:hover {
-    cursor: pointer;
+    border: none;
 }
 .contact {
     margin-top: -15px;
+    color: rgb(178, 127, 0);
 }
 .tel {
     width: 70%;
+    color: lightgray;
+}
+.tel::placeholder {
     color: lightgray;
 }
 .email {
     width: 70%;
     color: lightgray;
 }
+.email::placeholder {
+    color: lightgray;
+}
 .linkedin {
     width: 70%;
+    color: lightgray;
+}
+.linkedin::placeholder {
     color: lightgray;
 }
 .active {

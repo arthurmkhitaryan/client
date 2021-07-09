@@ -6,13 +6,13 @@ export function loginUser(credentials) {
             .then(({data}) => {
                 localStorage.setItem('_token', data.data.token);
                 localStorage.setItem('user', JSON.stringify(data.data.user));
-
                 dispatch({
                     type: 'LOGIN_SUCCESS',
                     payload: data.data.user,
                 })
             })
     };
+
 }
 
 export function setUser(user) {

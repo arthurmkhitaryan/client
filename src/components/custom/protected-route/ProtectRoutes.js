@@ -1,10 +1,11 @@
 const ProtectRoutes = ({ middlewares = [], routes, children }) => {
     const pathName = window.location.pathname;
-
+    console.log(routes)
     middlewares.forEach(middleware => {
-        routes.includes(pathName) && middleware();
-    });
-
+        if (routes.includes(pathName)) {
+            middleware();
+        }
+    })
     return children;
 }
 

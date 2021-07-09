@@ -14,3 +14,8 @@ h1 {
     width: 100%;
     margin: 20px auto;
 }
+
+.links {
+    font-size: 18px;
+    font-weight: bold;
+}
