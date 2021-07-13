@@ -1,14 +1,28 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 
 import api from "./repasitory/RepositoryFactory";
 
 import {BrowserRouter} from "react-router-dom";
-import RouterView from "./components/custom/RouterView";
+import UserRoutes from "./components/custom/protected-route/UserRoutes";
+import GuestRoutes from "./components/custom/protected-route/GuestRoutes";
+import {MyCVsRoute, ProfileRoute, RegisterRoute, LoginRoute} from "./constants/routes/routes";
+
+import {setUser} from "./redux/actions/userActions";
+
+import Profile from "./views/profile/Profile";
+import MyCVs from "./views/profile/CV/MyCVs";
+import Login from "./views/auth/Login";
+import Navbar from "./views/navbar/Navbar";
+import Register from "./views/auth/Register";
 
 import './App.css';
 import 'antd/dist/antd.css';
-import {setUser} from "./redux/actions/userActions";
+
+
+
+
+
 
 function App() {
     const dispatch = useDispatch();
@@ -22,11 +36,17 @@ function App() {
         })
     })
 
+
+
     return (
         <BrowserRouter>
             <div className="App">
+                <Navbar />
                 <div className="app-wrapper">
-                    <RouterView />
+                    <GuestRoutes component={Login} exact path={LoginRoute} />
+                    <GuestRoutes component={Register} exact path={RegisterRoute} />
+                    <UserRoutes component={Profile} exact path={ProfileRoute}/>
+                    <UserRoutes component={MyCVs} exact path={MyCVsRoute}/>
                 </div>
             </div>
         </BrowserRouter>

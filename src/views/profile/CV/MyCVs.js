@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import env from "../../../config/env";
 import {myCVs} from "../../../redux/actions/profileActions"
 
@@ -8,7 +8,6 @@ import './css/MyCVs.css';
 
 function MyCVs() {
     const dispatch = useDispatch();
-
     const [cvs, setCVs] = useState([])
 
 
@@ -19,7 +18,7 @@ function MyCVs() {
             ])
         })
 
-    })
+    }, [])
 
     return (
         <div className='MyCVs'>

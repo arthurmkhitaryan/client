@@ -1,8 +1,8 @@
 import {useState} from "react";
 import {useHistory, Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import {loginUser} from "../../redux/actions/userActions";
-import {useDispatch} from "react-redux";
 
 import {
     ProfileRoute,
@@ -14,7 +14,6 @@ import {Form, Input, Button} from 'antd';
 import "./css/Login.css";
 
 function Login() {
-    console.log("login page");
     const history = useHistory();
     const dispatch = useDispatch();
 

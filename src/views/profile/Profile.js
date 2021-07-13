@@ -12,7 +12,6 @@ import "./css/Profile.css";
 
 
 function Profile() {
-    console.log("Profile page")
     const dispatch = useDispatch();
     const history = useHistory();
     const divToPrint = useRef();
